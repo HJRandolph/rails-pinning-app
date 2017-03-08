@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'pins#index'
 
+  get '/new', to: 'pins#new'
+  
   resources :pins
     
   # Example of regular route:
