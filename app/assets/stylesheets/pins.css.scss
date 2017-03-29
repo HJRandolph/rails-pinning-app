@@ -26,3 +26,24 @@ h1 {
 hr{
   clear:both;
 }
+
+.back {
+	float: right;
+}
+
+.add {
+	text-align: right;
+}
+
+/* FORMS */
+
+.btn {
+	background-color: #dd5566;
+	border-color: tomato;
+	border-radius: 5px;
+	font-weight: 600;
+}
+
+.form-group {
+	margin-top: 1em;
+}

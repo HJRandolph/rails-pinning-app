@@ -1,5 +1,30 @@
-<h1>This will house a form to add new Pins.</h1>
+<h1>Add a new Pin!</h1>
 
+
+<%= form_for(@pin) do |f| %>
+
+	<%= f.label :title %>
+	<%= f.text_field :title, class: 'form-control' %>
+
+	<%= f.label :text %>
+	<%= f.text_field :text, class: 'form-control', placeholder: 'Resource Description' %>
+	
+	<label for="pin_slug">URL Display Name</label>
+	<%= f.text_field :slug, class: 'form-control', placeholder: 'URL Display Name' %>
+	
+
+	<%= f.label :url %>
+	<%= f.text_field :url, class: 'form-control' %>
+<div class="form-group">
+	<%= f.label :category %>
+	<%= f.collection_select(:category_id, Category.all, :id, :name) %>
+</div>
+	<%= f.submit :submit, class: 'btn btn-default' %>
+	
+<% end %>
+
+<div class="back">
 <a href="/">
-  Back to Home
+<i class="fa fa-arrow-left"></i>  Back to Home
 </a>
+</div>

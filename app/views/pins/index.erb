@@ -1,7 +1,14 @@
+
 <div class="header">
   <h1>Learning to Code</h1>
   <h3>A Collection of Ruby on Rails Resources for Beginners</h3>
 </div>
+
+<div class="add">
+<a href="/new">
+<i class="fa fa-plus-square"></i>
+  Add a new Pin!
+</a>
 <hr/>
 
   <% @pins.each_slice(3) do |row| %>
@@ -11,9 +18,9 @@
           <div class="pin">
             <div class="pin-header row">
             	<div class="logo-thumbnail col-xs-3">
-            		<% if "#{pin.resource_type}" == "rails" %>
+            		<% if "#{pin.category.name}" == "rails" %>
             			<%= image_tag('rails-logo-thumbnail.png') %>
-            		<% elsif "#{pin.resource_type}" == "ruby" %>
+            		<% elsif "#{pin.category.name}" == "ruby" %>
             			<%= image_tag('ruby-logo-thumbnail.png') %>
             		<% end %>
             	</div>
@@ -34,3 +41,6 @@
 
 
 <hr/>
+
+
+</div>
