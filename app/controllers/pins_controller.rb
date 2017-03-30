@@ -4,14 +4,16 @@ class PinsController < ApplicationController
     @pins = Pin.all
   end
   
-  def show
-    @pin = Pin.find(params[:id])
-  end
-  
   def show_by_name
   	@pin = Pin.find_by_slug(params[:slug])
   	render :show
   end
+  
+  
+  def show
+    @pin = Pin.find(params[:id])
+  end
+  
   
  def new
  	@pin = Pin.new
@@ -21,13 +23,35 @@ class PinsController < ApplicationController
  	@pin = Pin.new(pin_params)
  	if @pin.valid?
  		@pin.save
-	 	redirect_to pin_path(@pin)
+	 	redirect_to pin_by_name_path(@pin.slug)
  	else 
 		@errors = @pin.errors
 		render :new
 	end
 
  end
+
+ 
+ def edit
+ 	@pin = Pin.find_by_id(params[:id])
+ end
+ 
+ def edit_by_name
+ 	@pin = Pin.find_by_slug(params[:slug])
+ 	render :edit
+ end
+ 
+ def update
+ 	@pin = Pin.find_by_id(params[:id])
+ 	@pin.update_attributes(pin_params)
+ 	if @pin.valid?
+	 	redirect_to pin_by_name_path(@pin.slug)
+ 	else
+ 		@errors = @pin.errors
+ 		render :edit
+ 	end
+ 	
+end
  
  # Everything after this line is private
  private
