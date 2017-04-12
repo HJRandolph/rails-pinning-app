@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   get '/new', to: 'pins#new'
   post '/new', to: 'pins#create'
   
+  #get '/:id/edit', to: 'pins#edit'
+  get '/edit', to: 'pins#edit'
+  post '/edit', to: 'pins#show'
+
+  
 
     
   # Example of regular route:
