@@ -11,27 +11,7 @@
 	</div>
 <% end %>
 
-<%= form_for(@pin) do |f| %>
-
-	<%= f.label :title %>
-	<%= f.text_field :title, class: 'form-control' %>
-
-	<%= f.label :text %>
-	<%= f.text_field :text, class: 'form-control', placeholder: 'Resource Description' %>
-	
-	<%= f.label :slug %>
-	<%= f.text_field :slug, class: 'form-control', placeholder: 'URL Display Name' %>
-	
-
-	<%= f.label :url %>
-	<%= f.text_field :url, class: 'form-control' %>
-<div class="form-group">
-	<%= f.label :category %>
-	<%= f.collection_select(:category_id, Category.all, :id, :name) %>
-</div>
-	<%= f.submit :submit, class: 'btn btn-default' %>
-	
-<% end %>
+<%= render "form" %>
 
 <div class="back">
 <a href="/">

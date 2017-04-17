@@ -1,0 +1,24 @@
+<%= form_for(@pin, multipart: true) do |f| %>
+
+	<%= f.label :title %>
+	<%= f.text_field :title, class: 'form-control' %>
+
+	<%= f.label :text %>
+	<%= f.text_field :text, class: 'form-control', placeholder: 'Resource Description' %>
+	
+	<%= f.label :slug, "Friendy Name" %>
+	<%= f.text_field :slug, class: 'form-control', placeholder: 'URL Display Name' %>
+	
+	<%= f.label :url %>
+	<%= f.text_field :url, class: 'form-control' %>
+<div class="form-group">
+	<%= f.label :category %>
+	<%= f.collection_select(:category_id, Category.all, :id, :name) %>
+</div>
+<div class="form-group">
+	<%= f.label :image %>
+	<%= f.file_field :image %>
+</div>
+	<%= f.submit :submit, class: 'btn btn-default' %>
+
+<% end %>
