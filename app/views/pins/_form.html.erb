@@ -18,6 +18,9 @@
 <div class="form-group">
 	<%= f.label :image %>
 	<%= f.file_field :image %>
+	
+	<%= f.label :image_file_name, "Image Name" %>
+	<%= f.text_field :image_file_name, class: 'form-control' %>
 </div>
 	<%= f.submit :submit, class: 'btn btn-default' %>
 
