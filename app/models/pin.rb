@@ -4,5 +4,6 @@ class Pin < ActiveRecord::Base
   belongs_to :category
   has_attached_file :image, styles: { medium: "300x300", thumb: "75x75" },
   	default_url: "http://placebear.com/200/300"
+  	mount_uploader :picture, PictureUploader
   validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 end
