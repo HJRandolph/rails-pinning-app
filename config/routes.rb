@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'pins#index'
   
+
   get '/pins/name-:slug' => "pins#show_by_name", as: 'pin_by_name'
   get '/pins/name-:slug/edit' => "pins#edit_by_name", as: 'edit_by_name'
     
@@ -20,8 +21,8 @@ Rails.application.routes.draw do
   #get '/:id/edit', to: 'pins#edit'
   get '/edit', to: 'pins#edit'
   post '/edit', to: 'pins#show'
-
   
+
 
     
   # Example of regular route:
