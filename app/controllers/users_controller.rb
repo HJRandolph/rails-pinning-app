@@ -50,6 +50,10 @@ class UsersController < ApplicationController
       end
     end
   end
+  
+  def login
+  
+  end
 
   # DELETE /users/1
   # DELETE /users/1.json
