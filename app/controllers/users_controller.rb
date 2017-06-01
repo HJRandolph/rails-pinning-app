@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+  	@pins = current_user.pins
   end
 
   # GET /users/new
@@ -34,6 +35,17 @@ class UsersController < ApplicationController
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+  
+  def authenticate
+        @user = User.authenticate(params[:email], params[:password])
+    if @user.nil?
+        @errors = "Either email or password is incorrect"
+        render :login  
+    else       
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
     end
   end
 
@@ -64,6 +76,8 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
