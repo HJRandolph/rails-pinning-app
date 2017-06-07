@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   
   def self.authenticate(email,password)
   	@user = User.find_by_email(email)
-
-  	
   	if !@user.nil?
   		if @user.authenticate(password)
   			return @user
@@ -14,4 +12,6 @@ class User < ActiveRecord::Base
   	return nil
   end
 
+
+####################### The Last End #######################
 end

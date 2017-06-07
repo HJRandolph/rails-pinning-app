@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-  	@pins = current_user.pins
+
   end
 
   # GET /users/new
@@ -39,7 +39,8 @@ class UsersController < ApplicationController
   end
   
   def authenticate
-        @user = User.authenticate(params[:email], params[:password])
+  
+        @user = User.authenticate(params[:login][:email], params[:password])
     if @user.nil?
         @errors = "Either email or password is incorrect"
         render :login  
