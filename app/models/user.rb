@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
   has_many :pins
 #  has_secure_password
-  
+
+def authenticate(email)
+	@user = User.find_by_email(email)
+end
+ 
+ 
   def self.authenticate(email,password)
   	@user = User.find_by_email(email)
   	if !@user.nil?
