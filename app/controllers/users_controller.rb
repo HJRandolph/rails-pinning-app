@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   end
   
   def authenticate
-        @user = User.authenticate(params[:login][:email], params[:login][:password])
+        @user = User.authenticate(params[:login][:email],params[:password])
     if @user.nil?
         @errors = "Either email or password is incorrect"
         render :login  
@@ -48,6 +48,9 @@ class UsersController < ApplicationController
         redirect_to user_path(@user)
     end
   end
+
+
+
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json

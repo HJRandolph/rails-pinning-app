@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 # Signup route
   get 'signup' => 'users#new', as: :signup
   get 'login' => 'users#login'
-  post '/login' => 'users#authenticate'
+  post 'login' => 'users#authenticate'
   
 
     
