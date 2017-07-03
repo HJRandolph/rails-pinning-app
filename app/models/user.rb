@@ -8,15 +8,16 @@ class User < ActiveRecord::Base
 #end
  
  
-  def self.authenticate(email,password)
-  	@user = User.find_by_email(email)
-  	if !@user.nil?
-  		if @user.authenticate(password)
-  			return @user
-  		end
-  	end
-  	return nil
+  def self.authenticate(email, password)
+    User.find_by_email(email)
+    
+    if !@user.nil?
+    	if @user.authenticate(password)
+    		return @user
+    	end
+    end
   end
+
 
 
 ####################### The Last End #######################
