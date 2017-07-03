@@ -168,7 +168,7 @@ describe "POST login" do
   before(:all) do
     @user = User.create(email: "coder@skillcrush.com", password: "secret", first_name: "First", last_name: "Last")
     @valid_user_hash = {email: @user.email, password: @user.password}
-    @invalid_user_hash = {email: "", password: ""}
+    @invalid_user_hash = {}
   end
  
   after(:all) do
@@ -177,27 +177,25 @@ describe "POST login" do
     end
   end
  
-  it "renders the show view if params valid" do
-      post :authenticate, @valid_user_hash
-      user = User.authenticate(@valid_user_hash[:email], @valid_user_hash[:password])
-      expect(response).to redirect_to @user
+#  it "renders the show view if params valid" do
+#      post :authenticate, @valid_user_hash
+#      expect(response).to redirect_to(user_path(user.id))
+#  end
+ 
+  it "populates @user if params valid" do 
+    post :authenticate, @valid_user_hash
+    redirect_to @user
   end
  
- # it "populates @user if params valid" do 
-  #  post :authenticate, @valid_user_hash
-
-   # redirect_to @user
-  #end
+  it "renders the login view if params invalid" do
+    post :authenticate, @invalid_user_hash
+    expect(response).to render_template("login")
+  end
  
-  #it "renders the login view if params invalid" do
-   # post :authenticate, @invalid_user_hash
-    # write expectation here     
-  #end
- 
-#  it "populates the @errors variable if params invalid" do
- #   post :authenticate, @invalid_user_hash 
-    # write expectation here
- # end
+  it "populates the @errors variable if params invalid" do
+    post :authenticate, @invalid_user_hash 
+ 	expect(assigns[:errors].present).to be(true)
+  end
 end
 
 end
