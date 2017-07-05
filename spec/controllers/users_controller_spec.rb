@@ -177,10 +177,10 @@ describe "POST login" do
     end
   end
  
-#  it "renders the show view if params valid" do
-#      post :authenticate, @valid_user_hash
-#      expect(response).to redirect_to(user_path(user.id))
-#  end
+  it "renders the show view if params valid" do
+      post :authenticate, @valid_user_hash
+      expect(response).to redirect_to(user_path(user.id))
+  end
  
   it "populates @user if params valid" do 
     post :authenticate, @valid_user_hash
