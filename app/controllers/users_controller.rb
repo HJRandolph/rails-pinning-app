@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-
+	@user = current_user
   end
 
   # GET /users/new
@@ -39,13 +39,13 @@ class UsersController < ApplicationController
   end
   
   def authenticate
-    @user = User.authenticate(params[:login][:email],params[:password])
+    @user = User.authenticate(params[:email],params[:password])
 	if @user.nil?       
         @errors = "Either email or password is incorrect."
     	render :login  
-    	else
+    else
     	session[:user_id] = @user.id
-	    redirect_to user_path(:user_id)
+	    redirect_to user_path(@user)
 	end
   end
 

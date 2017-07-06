@@ -179,7 +179,7 @@ describe "POST login" do
  
   it "renders the show view if params valid" do
       post :authenticate, @valid_user_hash
-      expect(response).to redirect_to(user_path(user.id))
+      expect(response).to redirect_to(@user)
   end
  
   it "populates @user if params valid" do 
@@ -194,7 +194,7 @@ describe "POST login" do
  
   it "populates the @errors variable if params invalid" do
     post :authenticate, @invalid_user_hash 
- 	expect(assigns[:errors].present).to be(true)
+ 	expect(assigns[:errors].present?).to be(true)
   end
 end
 
