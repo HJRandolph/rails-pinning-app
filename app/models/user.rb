@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_secure_password
   	has_many :pins
+	
+	validates_presence_of :last_name, :first_name, :email, :password
+	validates_uniqueness_of :email
 
 
 #def authenticate(email)

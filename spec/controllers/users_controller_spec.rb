@@ -37,7 +37,13 @@ RSpec.describe UsersController, type: :controller do
   # UsersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-
+  describe "GET #index" do
+    it "assigns all users as @users" do
+      user = User.create! valid_attributes
+      get :index, params: {}, session: valid_session
+      expect(assigns(:users)).to eq([user])
+    end
+  end
 
   describe "GET #show" do
     it "assigns the requested user as @user" do
@@ -160,9 +166,9 @@ end
  
 describe "POST login" do
   before(:all) do
-    @user = User.create(email: "coder@skillcrush.com", password: "secret", first_name: "First", last_name: "Last")
+    @user = User.create(email: "coder@skillcrush.com", password: "secret")
     @valid_user_hash = {email: @user.email, password: @user.password}
-    @invalid_user_hash = {}
+    @invalid_user_hash = {email: "", password: ""}
   end
  
   after(:all) do
